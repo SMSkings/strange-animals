@@ -1298,7 +1298,8 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
 
             </tbody>
         </table>
-    </div><script>
+    </div>
+    <script>
     let button1Clicked = false;
     let button2Clicked = false;
     let button4Clicked = false;
@@ -1322,7 +1323,7 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
 
         button3.addEventListener('click', () => {
           document.getElementById('listContainer').style.display = 'block';
-        });
+        }, { once: true }); // Ensures the event listener is added only once
       }
     }
 
@@ -1344,7 +1345,7 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
 
         button6.addEventListener('click', () => {
           window.open('https://www.example.com', '_blank');
-        });
+        }, { once: true }); // Ensures the event listener is added only once
       }
     }
   </script>
