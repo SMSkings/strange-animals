@@ -67,7 +67,8 @@
 
     <h2>Blobfish - Psychrolutes marcidus</h2>
     <p>
-        The third animal we are listing is the bizarre blobfish. Have you ever heard of it? It is a strange ocean-dwelling creature that is the ugliest animal in the world. It is a pale, pink gelatinous blob with a droopy downturned mouth and a long, sagging nose. It is about a foot long and it is an omnivore. It is almost unrecognizable underwater. This tadpole-shaped fish has a bulbous head, a large mouth, tapered tails, and feathered pectoral fins. However, according to scientist Richard Arnott, this visual image of the blobfish is nothing more than a “Vast bullying campaign”. The blobfish is a weird creature.
+        The third animal we are 
+        <a id="button4" class="button-like">listing</a> is the bizarre blobfish. Have you ever heard of it? It is a strange ocean-dwelling creature that is the ugliest animal in the world. It is a pale, pink gelatinous blob with a droopy downturned mouth and a long, sagging nose. It is about a foot long and it is an omnivore. It is almost unrecognizable underwater. This tadpole-shaped fish has a bulbous head, a large mouth, tapered tails, and feathered pectoral fins. However, according to scientist Richard Arnott, this visual image of the blobfish is nothing more than a “Vast bullying campaign”. The blobfish is a weird creature.
     </p>
 
     <h2>Goblin shark - Mitsukurina owstoni</h2>
@@ -1321,6 +1322,37 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
                 button3.classList.remove('disabled');
             } else {
                 button3.classList.add('disabled');
+            }
+        }
+    </script>
+     <script>
+        const button1 = document.getElementById('button4');
+        const button2 = document.getElementById('button5');
+        const button3 = document.getElementById('button6');
+        const listContainer = document.getElementById('listContainer');
+
+        let button1Clicked = false;
+        let button2Clicked = false;
+
+        button4.addEventListener('click', () => {
+            button4Clicked = !button4Clicked; // Toggle click state
+            checkButtons();
+        });
+
+        button5.addEventListener('click', () => {
+            button5Clicked = !button5Clicked; // Toggle click state
+            checkButtons();
+        });
+
+        button6.addEventListener('click', () => {
+            listContainer.style.display = listContainer.style.display === 'block' ? 'none' : 'block';
+        });
+
+        function checkButtons() {
+            if (button4Clicked && button5Clicked) {
+                button6.classList.remove('disabled');
+            } else {
+                button6.classList.add('disabled');
             }
         }
     </script>
