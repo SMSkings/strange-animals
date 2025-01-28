@@ -1298,68 +1298,55 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
 
             </tbody>
         </table>
-    </div>
-    <script>
-        const button1 = document.getElementById('button1');
-        const button2 = document.getElementById('button2');
+    </div><script>
+    let button1Clicked = false;
+    let button2Clicked = false;
+    let button4Clicked = false;
+    let button5Clicked = false;
+
+    // Button 1 and 2 logic
+    document.getElementById('button1').addEventListener('click', () => {
+      button1Clicked = true;
+      checkButtons1And2();
+    });
+
+    document.getElementById('button2').addEventListener('click', () => {
+      button2Clicked = true;
+      checkButtons1And2();
+    });
+
+    function checkButtons1And2() {
+      if (button1Clicked && button2Clicked) {
         const button3 = document.getElementById('button3');
-        const listContainer = document.getElementById('listContainer');
-
-        let button1Clicked = false;
-        let button2Clicked = false;
-
-        button1.addEventListener('click', () => {
-            button1Clicked = !button1Clicked; // Toggle click state
-            checkButtons();
-        });
-
-        button2.addEventListener('click', () => {
-            button2Clicked = !button2Clicked; // Toggle click state
-            checkButtons();
-        });
+        button3.disabled = false;
 
         button3.addEventListener('click', () => {
-            listContainer.style.display = listContainer.style.display === 'block' ? 'none' : 'block';
+          document.getElementById('listContainer').style.display = 'block';
         });
+      }
+    }
 
-        function checkButtons() {
-            if (button1Clicked && button2Clicked) {
-                button3.classList.remove('disabled');
-            } else {
-                button3.classList.add('disabled');
-            }
-        }
-    </script>
-     <script>
-        const button4 = document.getElementById('button4');
-        const button5 = document.getElementById('button5');
+    // Button 4 and 5 logic
+    document.getElementById('button4').addEventListener('click', () => {
+      button4Clicked = true;
+      checkButtons4And5();
+    });
+
+    document.getElementById('button5').addEventListener('click', () => {
+      button5Clicked = true;
+      checkButtons4And5();
+    });
+
+    function checkButtons4And5() {
+      if (button4Clicked && button5Clicked) {
         const button6 = document.getElementById('button6');
-        const WebsiteName = document.getElementById('WebsiteName');
-
-        let button4Clicked = false;
-        let button5Clicked = false;
-
-        button4.addEventListener('click', () => {
-            button4Clicked = !button4Clicked; // Toggle click state
-            checkButtons();
-        });
-
-        button5.addEventListener('click', () => {
-            button5Clicked = !button5Clicked; // Toggle click state
-            checkButtons();
-        });
+        button6.disabled = false;
 
         button6.addEventListener('click', () => {
-            WebsiteName.style.display = WebsiteName.style.display === 'block' ? 'none' : 'block';
+          window.open('https://www.example.com', '_blank');
         });
-
-        function checkButtons() {
-            if (button4Clicked && button5Clicked) {
-                button6.classList.remove('disabled');
-            } else {
-                button6.classList.add('disabled');
-            }
-        }
-    </script>
+      }
+    }
+  </script>
 </body>
 </html>
