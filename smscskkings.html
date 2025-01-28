@@ -40,6 +40,43 @@
             padding: 8px;
             text-align: left;
         }
+       
+    </style>
+    <style> body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+        a.button-like {
+            text-decoration: none;
+            color: inherit;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        a.button-like.disabled {
+            pointer-events: none;
+            color: gray;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .listContainer {
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -1117,7 +1154,7 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
    </div>
     
     
-    <div id="listContainer">
+    <div id="listContainer1">
         <h3>Websites for More Information:</h3>
         <table>
             <thead>
@@ -1299,66 +1336,71 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
             </tbody>
         </table>
     </div>
-     <script>
-    const button1 = document.getElementById('button1'); // Thankyou
-    const button2 = document.getElementById('button2'); // Earth
-    const button3 = document.getElementById('button3'); // Wild
-    const listContainer = document.getElementById('list-container'); // List container
-
-    const button4 = document.getElementById('button4');
-    const button5 = document.getElementById('button5');
-    const button6 = document.getElementById('button6');
-
-    // State variables to track button clicks
+    <div id="listContainer2" class="listContainer">
+        <ul>
+            <li><a href="https://www.britannica.com/animal/goblin-shark" target="_blank">Goblin Shark - Encyclopedia Britannica</a></li>
+            <li><a href="https://www.nationalgeographic.com/animals/facts/glass-frog" target="_blank">Glass Frog - National Geographic</a></li>
+            <li><a href="https://www.wwf.org.uk/learn/wildlife/pink-fairy-armadillo" target="_blank">Pink Fairy Armadillo - WWF</a></li>
+        </ul>
+    </div>
+   <script>
+    // Variable to track if both button 1 and 2 are clicked
     let button1Clicked = false;
     let button2Clicked = false;
 
+    // Variable to track if both button 4 and 5 are clicked
     let button4Clicked = false;
     let button5Clicked = false;
 
-    // Logic for Button 1 (Thankyou) and Button 2 (Earth) -> Enable Button 3 (Wild)
-    button1.addEventListener('click', () => {
-      button1Clicked = true;
-      checkButton3Enable();
+    // When button 1 is clicked
+    document.getElementById("button1").addEventListener("click", function() {
+        button1Clicked = true;
+        checkButtons123(); // Check if both 1 and 2 are clicked
     });
 
-    button2.addEventListener('click', () => {
-      button2Clicked = true;
-      checkButton3Enable();
+    // When button 2 is clicked
+    document.getElementById("button2").addEventListener("click", function() {
+        button2Clicked = true;
+        checkButtons123(); // Check if both 1 and 2 are clicked
     });
 
-    function checkButton3Enable() {
-      if (button1Clicked && button2Clicked) {
-        button3.disabled = false;
-      }
+    // Function to check if both button 1 and 2 are clicked
+    function checkButtons123() {
+        if (button1Clicked && button2Clicked) {
+            document.getElementById("button3").disabled = false; // Enable button 3
+        }
     }
 
-    // Clicking Button 3 (Wild) reveals the list container
-    button3.addEventListener('click', () => {
-      listContainer.style.display = 'block';
+    // When button 3 is clicked, show the first list
+    document.getElementById("button3").addEventListener("click", function() {
+        document.getElementById("listContainer1").style.display = "block";
+        document.getElementById("listContainer2").style.display = "none";
     });
 
-    // Logic for Button 4 and Button 5 -> Enable Button 6
-    button4.addEventListener('click', () => {
-      button4Clicked = true;
-      checkButton6Enable();
+    // When button 4 is clicked
+    document.getElementById("button4").addEventListener("click", function() {
+        button4Clicked = true;
+        checkButtons456(); // Check if both 4 and 5 are clicked
     });
 
-    button5.addEventListener('click', () => {
-      button5Clicked = true;
-      checkButton6Enable();
+    // When button 5 is clicked
+    document.getElementById("button5").addEventListener("click", function() {
+        button5Clicked = true;
+        checkButtons456(); // Check if both 4 and 5 are clicked
     });
 
-    function checkButton6Enable() {
-      if (button4Clicked && button5Clicked) {
-        button6.disabled = false;
-      }
+    // Function to check if both button 4 and 5 are clicked
+    function checkButtons456() {
+        if (button4Clicked && button5Clicked) {
+            document.getElementById("button6").disabled = false; // Enable button 6
+        }
     }
 
-    // Clicking Button 6 opens a website
-    button6.addEventListener('click', () => {
-      window.open('https://example.com', '_blank');
+    // When button 6 is clicked, show the second list
+    document.getElementById("button6").addEventListener("click", function() {
+        document.getElementById("listContainer2").style.display = "block";
+        document.getElementById("listContainer1").style.display = "none";
     });
-  </script>
+</script>
 </body>
 </html>
