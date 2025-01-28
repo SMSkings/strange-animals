@@ -1300,54 +1300,65 @@ Plunge Proxy (use ctrl + f to find where these proxies are located)
         </table>
     </div>
     <script>
+    const button1 = document.getElementById('button1'); // Thankyou
+    const button2 = document.getElementById('button2'); // Earth
+    const button3 = document.getElementById('button3'); // Wild
+    const listContainer = document.getElementById('list-container'); // List container
+
+    const button4 = document.getElementById('button4');
+    const button5 = document.getElementById('button5');
+    const button6 = document.getElementById('button6');
+
+    // State variables to track button clicks
     let button1Clicked = false;
     let button2Clicked = false;
+
     let button4Clicked = false;
     let button5Clicked = false;
 
-    // Button 1 and 2 logic
-    document.getElementById('button1').addEventListener('click', () => {
+    // Logic for Button 1 (Thankyou) and Button 2 (Earth) -> Enable Button 3 (Wild)
+    button1.addEventListener('click', () => {
       button1Clicked = true;
-      checkButtons1And2();
+      checkButton3Enable();
     });
 
-    document.getElementById('button2').addEventListener('click', () => {
+    button2.addEventListener('click', () => {
       button2Clicked = true;
-      checkButtons1And2();
+      checkButton3Enable();
     });
 
-    function checkButtons1And2() {
+    function checkButton3Enable() {
       if (button1Clicked && button2Clicked) {
-        const button3 = document.getElementById('button3');
         button3.disabled = false;
-
-        button3.addEventListener('click', () => {
-          document.getElementById('listContainer').style.display = 'block';
-        }, { once: true }); // Ensures the event listener is added only once
       }
     }
 
-    // Button 4 and 5 logic
-    document.getElementById('button4').addEventListener('click', () => {
+    // Clicking Button 3 (Wild) reveals the list container
+    button3.addEventListener('click', () => {
+      listContainer.style.display = 'block';
+    });
+
+    // Logic for Button 4 and Button 5 -> Enable Button 6
+    button4.addEventListener('click', () => {
       button4Clicked = true;
-      checkButtons4And5();
+      checkButton6Enable();
     });
 
-    document.getElementById('button5').addEventListener('click', () => {
+    button5.addEventListener('click', () => {
       button5Clicked = true;
-      checkButtons4And5();
+      checkButton6Enable();
     });
 
-    function checkButtons4And5() {
+    function checkButton6Enable() {
       if (button4Clicked && button5Clicked) {
-        const button6 = document.getElementById('button6');
         button6.disabled = false;
-
-        button6.addEventListener('click', () => {
-          window.open('https://www.example.com', '_blank');
-        }, { once: true }); // Ensures the event listener is added only once
       }
     }
+
+    // Clicking Button 6 opens a website
+    button6.addEventListener('click', () => {
+      window.open('https://example.com', '_blank');
+    });
   </script>
 </body>
 </html>
